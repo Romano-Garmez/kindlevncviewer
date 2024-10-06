@@ -1,3 +1,6 @@
+# NOTE! This is a customized version of kvncviewer found on the MobileRead forums.
+This repo lacks many of the libraries and other files to be compiled, and is a mix of files from 2013 and 2024. If you're looking to make changes and/or compile yourself, you likely want the parent repo.
+
 ## About
 
 This is a VNC viewer for eReaders.
@@ -7,8 +10,9 @@ It works on the framebuffer, using the einkfb API from e-ink devices (einkfb.h) 
 This is based on LibVNCClient, part of the [LibVNCServer project](https://libvnc.github.io/).
 
 
-There is a discussion thread on MobileRead:
+There are multiple discussion threads on MobileRead:
 http://www.mobileread.com/forums/showthread.php?t=150434
+https://www.mobileread.com/forums/showthread.php?t=228168 (the source of most of these files)
 
 Note that the current version is a major rewrite of the original version.
 The current version is implemented in Lua, targeted at LuaJIT.
@@ -23,14 +27,7 @@ kVNCviewer supports many options that determine various settings. Run it without
 
 ## Building
 
-In order to build kVNCViewer, you can use GNU make. A Kindle (and other eReaders)-specific toolchain can be found at [@koreader/koxtoolchain](https://github.com/koreader/koxtoolchain). Specify a toolchain prefix as the "ARCH" variable, and it should build luajit, zlib, libjpeg and finally libvncclient. E.g., for legacy Kindles:
-
-```
-make ARCH=arm-kindle-linux-gnueabi
-```
-
-You can find the result in the "dist/<ARCH>" subdirectory. Also, a .zip file is created for distribution.
-
+This version of kindlevncviewer lacks many of the files required to build. To compile it yourself, use the parent repository owned by HWHW here: [link to parent repo](https://github.com/hwhw/kindlevncviewer)
 
 ## Running
 
