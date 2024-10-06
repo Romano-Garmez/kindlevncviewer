@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension>
+    <information>
+        <name>VNCViewer</name>
+        <version>0.6</version>
+        <author>hawhill</author>
+        <id>kvncviewer</id>
+    </information>
+    <menus>
+        <menu type="json" dynamic="true">menu.json</menu>
+    </menus>
+</extension>

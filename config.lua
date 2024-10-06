@@ -27,11 +27,34 @@ client_height = 0
 -- globals for remembering key state
 shift = false
 sym = false
+clickevent = 0
+x, y = 0, 0
 
 -- this handler will be called upon key presses (input events, actually)
 function handleInput(channel, itype, code, value)
 	--print("input:", channel, itype, code, value)
+		if itype == 3 then
+			if code == 57 then
+				clickevent = value + 1				
+				if x and y then
+					SendPointerEvent(x, y, 0)					
+				end
+			elseif code == 53 then
+				x = value
+			elseif code == 54 then
+				y = value
+				if clickevent == 1 then
+					-- ROMAN CHANGE
+					Quit()
+					--SendPointerEvent(x, y, 1)					
+				end
+			end
+		end
 	if itype == EV_KEY then
+		      if code == 102 then
+		        print("pushed menu button")
+			Quit()
+		      end
 		local pressed = false
 		if value == EVENT_VALUE_KEY_PRESS then
 			pressed = true

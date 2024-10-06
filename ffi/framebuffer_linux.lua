@@ -52,7 +52,7 @@ local function kindle_carta_mxc_wait_for_update_complete(fb)
 	carta_update_marker[0].update_marker = update_marker[0];
 	-- We're not using EPDC_FLAG_TEST_COLLISION, assume 0 is okay.
 	carta_update_marker[0].collision_test = 0;
-	return ffi.C.ioctl(fb.fd, ffi.C.MXCFB_WAIT_FOR_UPDATE_COMPLETE, carta_update_marker)
+	return ffi.C.ioctl(fb.fd,  0xc008462f, carta_update_marker)
 end
 
 -- Kobo's MXCFB_WAIT_FOR_UPDATE_COMPLETE == 0x4004462f
@@ -84,7 +84,7 @@ end
 -- Kindle's MXCFB_WAIT_FOR_UPDATE_SUBMISSION == 0x40044637
 local function kindle_mxc_wait_for_update_submission(fb)
 	-- Wait for the current (the one we just sent) update to be submitted
-	return ffi.C.ioctl(fb.fd, ffi.C.MXCFB_WAIT_FOR_UPDATE_SUBMISSION, update_marker)
+	return ffi.C.ioctl(fb.fd, 0x40044637, update_marker)
 end
 
 local function k51_update(fb, refreshtype, waveform_mode, x, y, w, h)
@@ -164,17 +164,11 @@ function framebuffer.open(device)
 			-- Kindle PaperWhite and KT with 5.1 or later firmware
 			local dummy = require("ffi/mxcfb_kindle_h")
 			-- NOTE: We need to differentiate the PW2 from the Touch/PW1... I hope this check is solid enough... (cf #550).
-			if fb.finfo.smem_len == 3145728 then
-				-- We're a PW2! Use the correct function, and ask to wait for every update.
-				fb.wait_for_every_updates = true
-				fb.einkWaitForCompleteFunc = kindle_carta_mxc_wait_for_update_complete
-			elseif fb.finfo.smem_len == 2179072 or fb.finfo.smem_len == 4718592 then
-				-- We're a Touch/PW1
-				fb.wait_for_full_updates = true
-				fb.einkWaitForCompleteFunc = kindle_pearl_mxc_wait_for_update_complete
-			else
-				error("unknown smem_len value for the Kindle mxc eink driver")
-			end
+
+			-- We're a PW2! Use the correct function, and ask to wait for every update.
+			fb.wait_for_every_updates = true
+			fb.einkWaitForCompleteFunc = kindle_carta_mxc_wait_for_update_complete
+
 			fb.einkUpdateFunc = k51_update
 			fb.einkWaitForSubmissionFunc = kindle_mxc_wait_for_update_submission
 			fb.bb = BB.new(fb.vinfo.xres, fb.vinfo.yres, BB.TYPE_BB8, fb.data, fb.finfo.line_length)

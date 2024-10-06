@@ -280,6 +280,7 @@ fb.bb:rotate(rotateFB)
 try_open_input("/dev/input/event0")
 try_open_input("/dev/input/event1")
 try_open_input("/dev/input/event2")
+try_open_input("/dev/input/event3")
 
 repeat
 	client = connect()
