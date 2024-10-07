@@ -11,7 +11,9 @@ This is based on LibVNCClient, part of the [LibVNCServer project](https://libvnc
 
 
 There are multiple discussion threads on MobileRead:
+<br>
 http://www.mobileread.com/forums/showthread.php?t=150434
+<br>
 https://www.mobileread.com/forums/showthread.php?t=228168 (the source of most of these files)
 
 Note that the current version is a major rewrite of the original version.
