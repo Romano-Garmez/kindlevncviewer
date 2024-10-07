@@ -5,13 +5,13 @@
 		"priority": -998, 
 		"items": [
 		{
-            "name": "VNC Samsung", 
+            "name": "VNC 1", 
             "priority": 1, 
             "action": "./kvncviewer.sh",
             "exitmenu": false
 		},
 		{
-            "name": "VNC Raspi", 
+            "name": "VNC 2", 
             "priority": 2, 
             "action": "./kvncviewer2.sh",
             "exitmenu": false
