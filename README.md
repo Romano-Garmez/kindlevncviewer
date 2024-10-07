@@ -1,6 +1,9 @@
 # NOTE! This is a customized version of kvncviewer found on the MobileRead forums.
 This repo lacks many of the libraries and other files to be compiled, and is a mix of files from 2013 and 2024. If you're looking to make changes and/or compile yourself, you likely want the parent repo.
 
+## Changes
+- Touching anywhere on the screen quits the VNC viewer. Previously, there was no way to quit the viewer other than ssh-ing into the Kindle, or force rebooting the Kindle. Soon I intend to make a specific corner of the screen quit, so you can still move the cursor with the Kindle touchscreen.
+
 ## About
 
 This is a VNC viewer for eReaders.
