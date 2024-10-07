@@ -16,9 +16,6 @@ http://www.mobileread.com/forums/showthread.php?t=150434
 <br>
 https://www.mobileread.com/forums/showthread.php?t=228168 (the source of most of these files)
 
-Note that the current version is a major rewrite of the original version.
-The current version is implemented in Lua, targeted at LuaJIT.
-
 
 ## Configuration
 
@@ -33,7 +30,7 @@ This version of kindlevncviewer lacks many of the files required to build. To co
 
 ## Running
 
-You need to copy the contents of this repo to your eReader. Then, from a launcher app or shell, call:
+You need to copy the contents of this repo to your eReader. If you're running KUAL (recommended), copy the entire kindlevnc folder into your /mnt/us/extensions folder. Then, from a launcher app or shell, call:
 
 ```
 ./luajit vncviewer.lua 192.168.1.1:5900
