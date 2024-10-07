@@ -31,13 +31,14 @@ This version of kindlevncviewer lacks many of the files required to build. To co
 
 ## Running
 
-You need to copy the program and the libraries it needs onto your eReader (you can try running it without and it will show you which libraries are missing). Then, from a launcher app or shell, call:
+You need to copy the contents of this repo to your eReader. Then, from a launcher app or shell, call:
 
 ```
 ./luajit vncviewer.lua 192.168.1.1:5900
 ```
 
 You will need to enter the correct server address or name and screen number.
+Alternatively, edit the ip addresses in the "kvncviewer.sh" scripts to your prefered host machine, as those can be triggered through KUAL. 
 
 
 ## Licensing/Copying
